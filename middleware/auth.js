@@ -12,6 +12,7 @@ const auth = async (req, res, next) => {
   if (decodedToken) {
     const user = await User.findOne({email: decodedToken.data.email})
     if(user){
+      req.__decoded = decodedToken.data
       next()
     } else {
       res.send({succes: false, auth: 'no auth, no user'})

@@ -45,7 +45,7 @@ UserScheme.pre('save', function(next) {
     })
   }
   if(!this.profileImage){
-    this.profileImage = `${APP_HOST}:${PORT}/user/profile/user_default.png`
+    this.profileImage = `${APP_HOST}:${PORT}/api/user/profile/user_default.png`
   }
 });
 

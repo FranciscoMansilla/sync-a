@@ -18,7 +18,7 @@ const getTokenData = (token) =>{
     privateKey,
     (err, decoded) => {
       if(err) {
-        console.log('Error al obtener data del token', err)
+        // console.log('Error al obtener data del token', err)
       } else {
         data = decoded
       }
