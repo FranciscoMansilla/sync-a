@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const userController = require('../controllers/user.controller')
 const upload = require('../middleware/upload.middleware')
+const {auth} = require('../middleware/auth')
+
 
 /**
  * @openapi
@@ -25,7 +27,7 @@ const upload = require('../middleware/upload.middleware')
  *                   password:
  *                     type: string
  *                     example: '123456789A'
- *                   name:
+ *                   username:
  *                     type: string
  *                     example: 'Francisco Mansilla'
  *                   role:
@@ -95,6 +97,8 @@ const upload = require('../middleware/upload.middleware')
 router.post('/register', upload.single('profileImage'), userController.register)
 
 router.get('/profile/:url', userController.profile)
+
+router.patch('/update', auth, userController.update)
 
 /**
  * @openapi
@@ -211,7 +215,7 @@ router.post('/login', userController.login)
  *                   example: no auth, no user!
  *                 
 */
-router.get('/info', userController.info)
+router.get('/info', auth, userController.info)
 
 
 module.exports = router
