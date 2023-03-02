@@ -20,7 +20,13 @@ const UserScheme = new mongoose.Schema(
     role:{
       type: [Number]
     },
-    name:{
+    username:{
+      type: String,
+    },
+    first_name:{
+      type: String,
+    },
+    last_name:{
       type: String,
     },
     profileImage: {
@@ -34,9 +40,7 @@ const UserScheme = new mongoose.Schema(
 );
 
 UserScheme.pre('save', function(next) {
-  if (this.role[0] === 1) {
-    this.company_id = this._id
-  }
+  console.log(this.isModified('password'))
   if (this.isModified('password')) {
     bcrypt.hash(this.password, saltRounds, (err, hashedPassword) => {
       if (err) return next(err)

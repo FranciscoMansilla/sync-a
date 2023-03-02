@@ -3,13 +3,13 @@ const {User} = require('../models')
 
 const users = [
   {
-    name: 'root',
+    username: 'root',
     email: 'root@synca.com',
     password: 'SYNCA2023',
     role: [0]
   },
   {
-    name: 'Fran',
+    username: 'Fran',
     email: 'fran@synca.com',
     password: 'SYNCA2023',
     role: [1]
