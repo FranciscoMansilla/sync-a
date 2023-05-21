@@ -32,6 +32,10 @@ const UserScheme = new mongoose.Schema(
     profileImage: {
       type: String
     },
+    deleted: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps:true,
@@ -65,9 +69,9 @@ UserScheme.methods.comparePassword = async function(password){
 
 UserScheme.methods.setProfileImage = function (filename) {
   if(filename){
-    this.profileImage = `${APP_HOST}:${PORT}/storage/${filename}`
+    this.profileImage = `${APP_HOST}:${PORT}/api/user/profile/${filename}`
   } else {
-    this.profileImage = `${APP_HOST}:${PORT}/default/user_default.png`
+    this.profileImage = `${APP_HOST}:${PORT}/api/user/profile/user_default.png`
   }
 }
 
