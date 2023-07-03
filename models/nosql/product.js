@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const productScheme = new mongoose.Schema(
   {
@@ -7,34 +7,34 @@ const productScheme = new mongoose.Schema(
       0 beat
     */
     productType: {
-      type: Number
+      type: Number,
     },
-    title:{
+    title: {
       type: String,
     },
     description: {
-      type: String
+      type: String,
     },
     cover: {
-      type: String
+      type: String,
     },
     tags: {
-      type: [{type: Number}]
+      type: [Number],
     },
     licences: [{type: Object}],
     user: {
       type: mongoose.ObjectId,
-      ref: 'users'
+      ref: "users",
     },
     deleted: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   {
-    timestamps:true,
-    versionKey:false
+    timestamps: true,
+    versionKey: false,
   }
 );
 
-module.exports = mongoose.model("product", productScheme)
+module.exports = mongoose.model("product", productScheme);
